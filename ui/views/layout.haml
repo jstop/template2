@@ -1,0 +1,47 @@
+!!!  
+%html  
+  %head  
+    %title RoutineBuilders 
+    %link(rel="stylesheet" href="/stylesheets/lib/bootstrap.min.css")
+    %link(rel="stylesheet" href="/stylesheets/lib/font-awesome.min.css")
+    %link(rel="stylesheet" href="/stylesheets/application.css")
+    %link(rel="stylesheet" href="/stylesheets/lib/token-input.css")
+    %link(rel="stylesheet" href="/stylesheets/lib/bootstrap-datetimepicker.min.css")
+  %body
+    .container-fluid
+      .row-fluid
+        %a{:href => '/'}
+          %h1.span5
+            %em RoutineBuilders
+        .offset5.span2{:style => "margin-top:15px"}
+          = render_login_logout
+      .row-fluid
+        .span2
+          %ul.nav.nav-list.nb-leftnav{:style => "text-align:center;margin-top:40px;"}
+            %li{:style => "margin:30px;"}
+              %a{:href => "/browse"}
+                %i.icon-reorder{:style => "font-size:56px;"}>
+                %br
+                %br
+                Browse
+            %li{:style => "margin:30px"}
+              %a{:href => "/schedule"}
+                %i.icon-calendar{:style => "font-size:56px;"}>
+                %br
+                %br
+                My Routines 
+            %li{:style => "margin:30px"}
+              %a{:href => "/build"}
+                %i.icon-wrench{:style => "font-size:56px;"}>
+                %br
+                %br
+                &nbsp;&nbsp;&nbsp;Build A Routine
+            %li{:style => "padding:30px"}
+              %a{:href => "/view_users"}
+                %i.icon-group{:style => "font-size:56px;"}>
+                %br
+                %br
+                &nbsp;&nbsp;&nbsp;Browse By Users
+        .span10{:style => "padding-top:0px;margin-top:0px;"}
+          =yield 
+    %script(src="/javascripts/lib/require.js" data-main="/javascripts/main")

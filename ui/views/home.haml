@@ -1,0 +1,103 @@
+
+.span4{:style => "margin-top:20px"}
+  %h1
+    Browse Routines
+  -Tag.all.each do |tag|
+    %a{:href => "/filtered?tokens=#{tag.id}"}
+      %span.badge.badge-info.pull-left{:style => "margin:5px;padding:5px;"}= tag.name
+  .row{:style => 'margin-bottom:20px'}
+  -Routine.where.limit(2).each do |routine|
+    %a.span11.btn{:style => "text-align:left;height:157px;margin-top:10px;", :href => "/view_routine/#{routine.id}"}
+      %h4
+        =routine.title
+      %p{:style => "height:50px"}
+        %small
+          %strong
+            Purpose:
+          =routine.purpose.truncate(190, :seperatot => ' ')
+      %p
+        %small
+          %strong
+            Total:
+          -if routine.total_time_hours != 0
+            =routine.total_time_hours
+            Hours
+          -if routine.total_time_minutes != 0
+            =routine.total_time_minutes
+            Minutes 
+      .row{:style => "margin:0px;clear:both;"}
+        %p.pull-left
+          =routine.minutes
+          min. on
+          =routine.days.count
+          days for
+          =routine.weeks
+          week(s)
+        -routine.tags.each do |tag|
+          %span{:class => "badge badge-info pull-right"}
+            =tag
+.span3{:style => "margin:20px"}
+  %h1
+    Build Routines
+  %form
+    %fieldset
+      .lead{:style => "margin-bottom:5px"}
+        %strong
+          Title 
+      %input{:style => "margin-bottom:20px;", :name => "title",:placeholder => "Run"}
+      .lead{:style => "margin-bottom:5px;margin-top:5px"}
+        %strong
+          for
+        %select.span2{:style =>"margin-left:15px;margin-right:15px;",:name => "title",:placeholder => "Title/Goal"}
+          -(1..7).each do |x|
+            %option{:value => "#{x}"}
+              =x
+        %strong
+          week(s)
+        %strong
+          on
+      %p{:style => "margin:0px"}
+        %small
+          Default Days:
+      .btn-group{"data-toggle" => "buttons-checkbox"}
+        %button.btn.btn-info{:type => "button"}
+          S
+        %button.btn.btn-info{:type => "button"}
+          M
+        %button.btn.btn-info{:type => "button"}
+          T
+        %button.btn.btn-info{:type => "button"}
+          W
+        %button.btn.btn-info{:type => "button"}
+          T
+        %button.btn.btn-info{:type => "button"}
+          F
+        %button.btn.btn-info{:type => "button"}
+          S
+      .lead{:style => "margin-bottom:5px;margin-top:5px"}
+        %strong
+          for
+        %select.span2{:style =>"margin-left:15px;margin-right:15px;",:name => "title",:placeholder => "Title/Goal"}
+          -(1..7).each do |x|
+            %option{:value => "#{x}"}
+              =x
+        %strong
+          Hours(s)
+        %select.span2{:style =>"margin-left:15px;margin-right:15px;",:name => "title",:placeholder => "Title/Goal"}
+          -(1..7).each do |x|
+            %option{:value => "#{x}"}
+              =x
+        %strong
+          Minute(s)
+      .lead{:style => "margin-bottom:5px"}
+        %strong
+          Extra Info:
+      %textarea{:name => "purpose", :rows => "3", :placeholder=> "Pitch your routine"}
+      .lead{:style => "margin-bottom:5px"}
+        %strong
+          Resources:
+      %textarea{:name => "purpose", :rows => "3", :placeholder=> "Pitch your routine"}
+.span4{:style => "margin-top:20px"}
+  %h1
+    Download Routines
+  %img{:src => "/images/iphone_calendar_img.jpg"}

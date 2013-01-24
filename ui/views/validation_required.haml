@@ -1,0 +1,11 @@
+.hero-unit
+  %h3
+    Check your email to validate your account and begin routine building.
+  %h4
+    For a reminder submit your email adress below.
+  %form{ :action => "/email_validation", :method => "post"}
+    %fieldset
+      %ol
+        %li
+          %input{:type => "text", :name => "email", :placeholder => "email adress"}
+      %input{:type => "submit", :value => "Send", :class => "button"}

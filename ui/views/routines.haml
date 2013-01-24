@@ -1,0 +1,28 @@
+-@routines.each_slice(3) do |row|
+  .row-fluid{:style => "margin-top:15px"}
+    -row.each do |routine|
+      %a.span4.btn{:style => "text-align:left;height:187px", :href => "/view_routine/#{routine.id}"}
+        %h4
+          =routine.title
+        %p{:style => "height:80px"}
+          %small
+            %strong
+              Purpose:
+            =routine.purpose.truncate(190, :seperatot => ' ')
+        %p
+          %small
+            %strong
+              Commitment:
+            -if routine.total_time_hours != 0
+              =routine.total_time_hours
+              Hours
+            -if routine.total_time_minutes != 0
+              =routine.total_time_minutes
+              Minutes 
+            over
+            =routine.weeks
+            Weeks
+        .row{:style => "margin:0px;clear:both;"}
+          -routine.tags.each do |tag|
+            %span{:class => "badge badge-info pull-right"}
+              =tag

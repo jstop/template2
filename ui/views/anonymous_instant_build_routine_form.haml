@@ -1,0 +1,114 @@
+%div{:class =>"btn", :style => "cursor:default;padding:30px;"}
+  %form#RoutineForm{:action => "/instant_build_ics", :method => "get"}
+    %div{:class => "row-fluid"}
+      .span6
+        %input{:name => "title", :placeholder => "Title", :type => "text", :style => "width:390px"}
+        %br/
+        %textarea{:name => "purpose", :placeholder => "Purpose", :rows => "5", :style => "width:390px"}
+        %br/
+        %textarea{:name => "resources", :placeholder => "General Resources", :rows => "3", :style => "width:390px"}
+        %br/
+        %h5
+          Search Tags
+        %div{:class => "offset1", :style => "margin-left:25px;"}
+          %input{:id => "token-input", :type => "text", :name => "tokens"} 
+      .span6
+        .row
+          %label{:class => "span2 offset1"}
+            Schedule
+        .row
+          %div{:class => "span2 offset1"}
+            %label
+              Weeks
+          .span3
+            %select{:name => "weeks"}
+              %option 1
+              %option 2
+              %option 3
+              %option 4
+              %option 5
+              %option 6
+              %option 7
+              %option 8
+        .row
+          %div{:class => "span2 offset1"}
+            %label
+              Minutes 
+          .span3
+            %select{:name => "minutes"}
+              %option 0
+              %option 5
+              %option 10
+              %option 15
+              %option 20
+              %option 25
+              %option 30
+              %option 35
+              %option 40
+              %option 45
+              %option 50
+              %option 55
+        .row
+          %div{:class => "span2 offset1"}
+            %label
+              Hours 
+          .span3
+            %select{:name => "hours"}
+              %option 0
+              %option 1
+              %option 2
+              %option 3
+        .row
+          %div{:class => "offset1"}
+            %label.checkbox.inline
+              %input.btn-checkbox{:name => "days[]", :type => "checkbox", :value => "Sun"}
+                %span Sun
+            %label.checkbox.inline
+              %input{:name => "days[]", :type => "checkbox", :value => "Mon"}
+                %span Mon
+            %label.checkbox.inline
+              %input{:name => "days[]", :type => "checkbox", :value => "Tue"}
+                %span Tue
+            %label.checkbox.inline
+              %input{:name => "days[]", :type => "checkbox", :value => "Wed"}
+                %span Wed
+            %label.checkbox.inline
+              %input{:name => "days[]", :type => "checkbox", :value => "Thu"}
+                %span Thu
+            %label.checkbox.inline
+              %input{:name => "days[]", :type => "checkbox", :value => "Fri"}
+                %span Fri
+            %label.checkbox.inline
+              %input{:name => "days[]", :type => "checkbox", :value => "Sat"}
+                %span Sat
+        .row
+          %div{:class => "offset1 span8"}
+          %div{:class => "offset1 span8"}
+            %h5
+              Start Date
+          %div{:class => "span11"}
+            %label.checkbox.inline
+              %input.btn-checkbox{:name => "start_date", :type => "radio", :value => "Next Sun"}
+                %span Next Sun
+            %label.checkbox.inline
+              %input{:name => "start_date", :type => "radio", :value => "Next Mon"}
+                %span Next Mon
+            %label.checkbox.inline
+              %input{:name => "start_date", :type => "radio", :value => "Next Tue"}
+                %span Next Tue
+            %label.checkbox.inline
+              %input{:name => "start_date", :type => "radio", :value => "Next Wed"}
+                %span Next Wed
+            %label.checkbox.inline
+              %input{:name => "start_date", :type => "radio", :value => "Next Thu"}
+                %span Next Thu
+            %label.checkbox.inline
+              %input{:name => "start_date", :type => "radio", :value => "Next Fri"}
+                %span Next Fri
+            %label.checkbox.inline
+              %input{:name => "start_date", :type => "radio", :value => "Next Sat"}
+                %span Next Sat
+        .row
+          %div{:class => "offset7"}
+            %br
+            %input{:type => "submit", :value => "Build"}

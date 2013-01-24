@@ -1,0 +1,15 @@
+%form#RoutineForm{:action => "/filtered", :method => "get"}
+  %h5
+    Search Tags
+  %div{:class => "offset1", :style => "margin-left:25px;"}
+    .row-fluid
+      .span5
+        %input{:id => "token-input", :type => "text", :name => "tokens"} 
+      .span1
+        %input{:type => "submit", :value => "Search"}
+      .span3
+        Tags: 
+        -@tags.each do |tag|
+          %span{:class => "badge badge-info"}= tag
+  = erb :project_home
+    

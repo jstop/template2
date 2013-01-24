@@ -1,0 +1,58 @@
+<h3> Available Routines </h3>
+
+            <div class="row-fluid">
+              <div class="span12">
+              <ul class="thumbnails">
+  <% @routines.each_with_index do |routine, index| %>
+    <% if (index % 3 == 0 && index !=0) %>
+              </ul>
+            </div>
+            </div>
+          <div class="row-fluid">
+              <div class="span12">
+                <ul class="thumbnails">
+    <% end %>
+              <a class="span4" href="/view_routine/<%= routine._id %>">
+                <li>
+                  <div class="btn" style="text-align:left;padding:15px;margin-bottom:10px;height:216px;width:299px;">
+                    <div class="caption">
+                      <span><%= routine.votes_average %></span>
+                      <% routine.tags.each do |tag| %>
+                        <span class="badge badge-info"><%= tag%></span>
+                      <% end %>
+                      <h4 style="margin-bottom:0px;"><%= routine.title %></h4>
+                      <p style="margin:0px;"><small><%= routine.purpose.truncate(190, :seperator => ' ')%></small></p>
+                        <h4 style="margin-bottom:0px;">Routine</h4>
+                        <h6 style="margin:0px;">Duration - <%= routine.weeks%> 
+                          <% if routine.weeks > 1 %>
+                            weeks
+                          <% else %>
+                            week 
+                          <% end %>
+                          &nbsp;  <%= routine.days.count %> days/wk
+                        </h6>
+                        <h6 style="margin:0px;">Total Commitment - 
+                          <% if routine.total_time_hours != 0 %>
+                            <%= routine.total_time_hours %> Hours 
+                          <% end %>
+                          <% if routine.total_time_minutes != 0 %>
+                            <%= routine.total_time_minutes %> Minutes
+                          <% end %>
+                        </h6>
+                        <!--
+                      <% routine.days.each do |day| %>
+                        <span class="label label-important"><%= day %></span>
+                      <% end %>
+                      <a href="/view_user/<%= routine.user_id %>"><%= MmUser.find(routine.user_id) %></p></a>
+                      <a class="btn"  href="/view_routine/<%= routine.id %>">View</a></span>
+                        <form action='/routine/<%=routine.id %>' method='post'>
+                          <input type="hidden" name="_method" value="delete">  
+                          <input type='submit' value='Delete'>
+                        </form>
+                        -->
+                    </div>
+                  </div>
+                </li>
+              </a>
+  <% end %>
+            </div><!--/row-->

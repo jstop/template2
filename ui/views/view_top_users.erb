@@ -1,0 +1,22 @@
+<h3> Top Users</h3>
+            <div class="row-fluid">
+              <ul class="thumbnails">
+              <% @users.each_with_index do |user, index| %>
+                <% if (index % 3 == 0 && index !=0) %>
+              </ul>
+            </div>
+          <div class="row-fluid">
+                <% end %>
+                <a href="/view_user/<%= user._id %>">
+                  <li class="span4">
+                    <div class="thumbnail btn" style="text-align:left;padding:15px;min-height:200px">
+                      <div class="caption">
+                        <h5 style="margin:0px;"><%= user.name %></h5>
+                        <h6 style="margin:0px;">Points</h6>
+                        <p><small><%= user.points %></small></p>
+                      </div>
+                    </div>
+                  </li>
+                </a>
+              <% end %>
+            </div><!--/row-->

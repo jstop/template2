@@ -1,0 +1,86 @@
+.hero-unit{:style => "padding:20px 30px 20px 40px;margin-top:30px;"}
+  .container
+    .row{:style => "margin-top:0px; padding-top:0px;"}
+      .span4{:style => "padding:10px;"}
+        .lead
+          %strong
+            -if (@routine.total_time_hours != 0) 
+              #{@routine.total_time_hours} Hours 
+            -if @routine.total_time_minutes != 0
+              #{@routine.total_time_minutes} Minutes
+            Total
+          over 
+          %br
+          %strong
+            =@routine.weeks
+            Weeks Duration
+          doing 
+          %br
+          %strong
+            -if @routine.hours != 0
+              =@routine.hours 
+              Hours
+            -if @routine.minutes != 0
+              =@routine.minutes 
+              Minutes 
+          on
+          %br
+          -@routine.days.each do |day|
+            %span{"class" => "label label-important", :style => "margin:1px;font-size:16px;"}= day
+        %form
+          %fieldset
+            .lead{:style => "margin-bottom:5px"}
+              %strong
+                Start Routine On:
+            #datetimepicker1.input-append
+              %input{"data-format" => "MM/dd/yyyy HH:mm:ss PP", :type => "text"}
+              %span.add-on
+                %i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+            .lead{:style => "margin-bottom:5px"}
+              %strong
+                Schedule Events @
+            #datetimepicker2.input-append
+              %input{"data-format" => "hh:mm:ss", :type => "text"}
+              %span.add-on
+                %i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+            .input{:type => 'submit', :value => 'Download Routine', :class => 'button'}
+      .span8
+        %h2
+          =@routine.title
+        .lead
+          =@routine.purpose
+        %h2
+          Resources Required 
+        %a{:href => "#{@routine.resources}"}
+          =@routine.resources
+      -# %form{ :action => "/routine/vote_down", :method => "post", :class => "span1"}
+        %fieldset
+          %input{:type => "hidden", :name => "routine_id", :value => "#{@routine.id}"}
+          %input{:type => "submit", :value => "Down", :class => "button"}
+      -# %h3.span1
+        =@routine.votes_average 
+      -# %form{ :action => "/routine/vote_up", :method => "post", :class => "span1"}
+        %fieldset
+          %input{:type => "hidden", :name => "routine_id", :value => "#{@routine.id}"}
+          %input{:type => "submit", :value => "Up", :class => "button"}
+    .row
+      %span.pull-left{:style => "margin-right:10px"}
+        Built By: 
+        %a{:href => "/view_user/#{@routine.id}"}=@routine.user_name
+      -@routine.tags.each do |tag|
+        %span{:class => "badge badge-info pull-right"}= tag
+    %hr
+    .row
+      %h2
+        Comments
+      -@routine.comments.each do |comment|
+        .thumbnail
+          %h5=comment.content
+          %a{:href => "/view_user/#{comment.commentor}"}=comment.commentor_name
+    %form{ :action => "/routine/comment", :method => "post"}
+      %fieldset
+        %ol
+          %li
+            %textarea{:name => "content", :rows=> "3", :placeholder => "Description"}
+          %input{:type => "hidden", :name => "routine_id", :value => "#{@routine.id}"}
+        %input{:type => "submit", :value => "Send", :class => "button"}

@@ -1,0 +1,9 @@
+.row-fluid{:style => "height:50px;"}
+  %form#RoutineForm{:action => "/filtered", :method => "get"}
+    .span12
+      .offset5.span5
+        %input{:id => "token-input", :type => "text", :name => "tokens"} 
+      .span1
+        %input{:type => "submit", :value => "Search"}
+.row-fluid
+  = haml :routines

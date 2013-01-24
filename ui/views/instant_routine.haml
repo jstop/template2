@@ -1,0 +1,23 @@
+%div{:class => "thumbnail", :style => "text-align:left"}
+  %div{:class => "caption"}
+    -params[:tokens].split(",").each do |tag|
+      %span{:class => "badge badge-info"}= Tag.find(tag).name
+  %h5
+    =params[:title]
+  %h6
+    Purpose
+  %p
+    %small
+      =params[:purpose]
+  %span
+    Weeks :
+    =params[:weeks]
+  %span
+    Minutes : 
+    =params[:minutes]
+  %span
+    Hours :
+    =params[:hours]
+  %br
+  -params[:days].each do |day|
+    %span{:class => "label label-important"}= day

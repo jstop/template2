@@ -1,0 +1,18 @@
+%ul
+  -@tags.each do |tag|
+    %li
+      %h3= tag.name
+      %p= tag.description
+%form{ :action => "/build_tag", :method => "post"}
+  %fieldset
+    %ol
+      %li
+        %input{:type => "text", :name => "name", :placeholder => "Name"}
+      %li
+        %textarea{:name => "description", :rows=> "3", :placeholder => "Description"}
+    %input{:type => "submit", :value => "Send", :class => "button"}
+
+%form{ :action => "/token_params", :method => "post"}
+  %fieldset
+    %input{:id => "token-input", :type => "text", :name => "tokens", :placeholder => "tags"}
+    %input{:type => "submit", :value => "Send", :class => "button"}
